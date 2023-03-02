@@ -10,17 +10,15 @@ output_format = sys.argv[2]
 # Read data from file
 data = pd.read_csv(file_name, delimiter='\t')
 
-data = data.rename(columns={'Home State': 'Home_State'})
-
 # Convert to the desired format
 if output_format == '-c':
     data.to_csv('output.csv', index=False)
 elif output_format == '-j':
     data.to_json('output.json', orient='records')
 elif output_format == '-x':
-    data.to_csv('output.csv', index=False)
+    #data.to_csv('output.csv', index=False)
     # Read the CSV file and extract the column names and content
-    df = pd.read_csv('output.csv')
+    df = data
     columns = df.columns.tolist()
     content = df.values.tolist()
 
